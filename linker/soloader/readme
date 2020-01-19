@@ -1,0 +1,14 @@
+helloworld.c so文件源码   loadtest.c 加载程序源码
+
+编译：
+arm-linux-androideabi-gcc --sysroot=/home/obsidian/Android/Sdk/ndk-bundle/platforms/android-17/arch-arm  helloworld.c -shared -fPIC -o   libhelloworld.so  -g
+arm-linux-androideabi-gcc --sysroot=/home/obsidian/Android/Sdk/ndk-bundle/platforms/android-17/arch-arm  loadtest.c  -fPIC -o   loadtest  -g
+adb push libhelloworld.so loadtest /data/local/tmp/load
+
+输出：
+130|root@generic:/data/local/tmp/load # ./loadtest                             
+mmap addr is b6ef0000, value is 464c457f
+puts addr is b6f31f59
+puts_plt value is 0xe28fc600
+puts plt addr is b6ef02e0
+helloworld???
